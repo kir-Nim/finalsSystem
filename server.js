@@ -1,12 +1,33 @@
-const http = require("http");
-const PORT = process.env.PORT || 3000;
+const express = require('express');
+const app = express();
+const PORT = 3000;
 
-const server = http.createServer((req, res) => {
-  res.write("Hello Cloud!!!");
-  res.write("Hello Again");
-  res.end();
+
+app.get('/', (req, res) => {
+res.send(`
+<html>
+<head>
+<title>Simple Backend Page</title>
+<style>
+body {
+background-color: #e3f2fd;
+font-family: Arial, sans-serif;
+text-align: center;
+padding-top: 100px;
+}
+h1 { font-size: 32px; }
+p { font-size: 20px; }
+</style>
+</head>
+<body>
+<h1>Earl Cosmod - BSIT Section</h1>
+<p>"Success is built on consistency, not intensity."</p>
+</body>
+</html>
+`);
 });
 
-server.listen(PORT, () => {
-  console.log(`Server running on port ${PORT}`);
+
+app.listen(PORT, () => {
+console.log(`Server running on http://localhost:${PORT}`);
 });
